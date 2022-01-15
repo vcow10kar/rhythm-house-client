@@ -17,3 +17,15 @@
 .albumForm > * {
     margin: auto;
 }
+
+.songForm {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    justify-content: center;
+}
+
+.albumForm > * {
+    margin: auto;
+}

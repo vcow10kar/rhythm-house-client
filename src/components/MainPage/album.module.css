@@ -3,7 +3,7 @@
     margin: auto;
     flex-wrap: wrap;
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     gap: 20px;
 }
 
@@ -12,6 +12,7 @@
     text-align: left;
     padding: 10px;
     border: 2px solid #384AF1;
+    min-width: 200px;
 }
 
 .albumName {
@@ -63,4 +64,20 @@
 
 .albumSongDetails:hover {
     background-color: rgba(128, 128, 128, 0.445);
+}
+
+.actionsDiv {
+    width: 80%;
+    margin: auto;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.actionsDiv > * {
+    width: 300px;
 }

@@ -7,7 +7,7 @@ import { useContext } from 'react';
 const Navbar = () => {
     const { artistObj } = useContext(LoginContext);
 
-    console.log(artistObj);
+    
     return (
         <div className={styles.navbar}>
             <div className={styles.appLogo}>

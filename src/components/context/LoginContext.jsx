@@ -12,6 +12,7 @@ export default function AuthContext({ children }) {
 
     const handleCheckUser = () => {
         let tok = localStorage.getItem('token');
+        console.log(tok);
         if (!artistObj) {
             axios.get(`http://localhost:5000/artist/getArtist`,{
                 headers: {
@@ -20,8 +21,7 @@ export default function AuthContext({ children }) {
             })
                 .then(res => {
                     localStorage.setItem('artistObj', JSON.stringify(res.data.artist));
-                    setArtistObj(JSON.parse(res.data.artist));
-                    window.location.href = '/';
+                    setArtistObj(res.data.artist);
                 })
                 .catch(err => {
                     console.log('Error:', err);
@@ -30,6 +30,10 @@ export default function AuthContext({ children }) {
             setArtistObj(JSON.parse(localStorage.getItem('artistObj')))
         }
     }
+
+    useState(() => {
+        handleCheckUser();
+    }, []);
 
     return (
         <LoginContext.Provider value={{token, setToken, artistObj, handleCheckUser}}>{children}</LoginContext.Provider>

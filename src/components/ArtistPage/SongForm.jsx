@@ -1,5 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { LoginContext } from "../context/LoginContext";
+import styles from './artist.module.css';
 import { useContext } from 'react';
 import axios from "axios";
 
@@ -35,10 +36,10 @@ const SongForm = ({ album }) => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <TextField variant="outlined" name="name" label="Name" required placeholder='Enter Album Name' />
-                <TextField variant="outlined" name="minutes" label="Minutes" required placeholder='Enter Minutes' />
-                <TextField variant="outlined" name="seconds" label="Seconds" required placeholder='Enter Seconds' />
+            <form onSubmit={handleSubmit} className={styles.songForm}>
+                <TextField variant="outlined" name="name" label="Name" required placeholder='Enter Album Name' defaultValue={""}/>
+                <TextField variant="outlined" name="minutes" label="Minutes" required placeholder='Enter Minutes' defaultValue={""}/>
+                <TextField variant="outlined" name="seconds" label="Seconds" required placeholder='Enter Seconds' defaultValue={""}/>
 
                 <Button type = "submit" variant = "contained" disableElevation>Add Song</Button>
             </form>
