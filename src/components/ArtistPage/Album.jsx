@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import styles from './album.module.css';
-import AlbumSongs from './AlbumSongs';
+import styles from './artist.module.css';
+// import AlbumSongs from './AlbumSongs';
 
 const Album = ({ data }) => {
     const [songs, setSongs] = useState([]);
@@ -19,13 +19,12 @@ const Album = ({ data }) => {
             })
     }, [])
     return (
-        <div className={styles.albumDiv}>
+        <div className={styles.albumDetails}>
             <img onClick={handleOpen} src={data.coverURL} alt="cover url" />
             <h2 className={styles.albumName}>{data.name}</h2>
-            <p>{data.artist.name.firstName} {data.artist.name.lastName}</p>
             <p>{data.year}</p>
 
-            <AlbumSongs album = {data} songs = {songs} open = {open} handleClose = {handleClose} handleOpen = {handleOpen}/>
+            {/* <AlbumSongs album = {data} songs = {songs} open = {open} handleClose = {handleClose} handleOpen = {handleOpen}/> */}
         </div>
     )
 }

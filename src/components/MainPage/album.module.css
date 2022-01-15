@@ -1,9 +1,9 @@
 .albums {
-    width: 80%;
+    width: 96%;
     margin: auto;
     flex-wrap: wrap;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -11,7 +11,7 @@
     width: 20%;
     text-align: left;
     padding: 10px;
-    border: 2px solid #384AF1;
+    border: 1px solid rgb(46, 46, 46);
     min-width: 200px;
 }
 
@@ -63,13 +63,12 @@
 }
 
 .albumSongDetails:hover {
-    background-color: rgba(128, 128, 128, 0.445);
+    background-color: rgba(32, 30, 30, 0.726);
 }
 
 .actionsDiv {
-    width: 80%;
+    width: 96%;
     margin: auto;
-    background-color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

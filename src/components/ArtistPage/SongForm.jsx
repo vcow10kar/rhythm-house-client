@@ -22,7 +22,7 @@ const SongForm = ({ album }) => {
             }
         }
 
-        axios.post(`http://localhost:5000/song`,payload,{
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/song`,payload,{
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -21,7 +21,7 @@ const AlbumForm = ({setAlbum}) => {
             coverURL: data.get('coverURL'),
         }
 
-        axios.post(`http://localhost:5000/album`,payload,{
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/album`,payload,{
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -35,15 +35,13 @@ const AlbumForm = ({setAlbum}) => {
     }
     return (
         <div>
-            <h1>Album Form</h1>
-
             <form className={styles.albumForm} onSubmit={handleAlbumSubmit}>
                 <TextField variant = "outlined" name = "name" label = "Name" required placeholder='Enter Album Name'/>
                 <TextField variant = "outlined" name = "genre" label = "Genre" required placeholder='Enter Genre'/>
                 <TextField variant = "outlined" name = "year" label = "Year" required placeholder='Enter Year'/>
                 <TextField variant = "outlined" name = "coverURL" label = "Cover URL" required placeholder='Enter Cover URL'/>
 
-                <Button type = "submit" disableElevation variant = "contained">Create Album</Button>
+                <Button type = "submit" disableElevation variant = "contained" sx = {{marginTop: '10px'}}>Create New Album</Button>
             </form>
         </div>
     )

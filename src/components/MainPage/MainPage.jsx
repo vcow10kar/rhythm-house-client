@@ -11,7 +11,7 @@ const MainPage = () => {
     const [sort, setSort] = useState('ascending');
 
     const getAlbumData = () => {
-        axios.get('http://localhost:5000/album')
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/album`)
             .then((res) => {
                 setData(res.data.albums);
                 setFilteredData(res.data.albums);
@@ -46,7 +46,7 @@ const MainPage = () => {
     return (
         <div>
             <div className = {styles.actionsDiv}>
-                <TextField onInput={searchAlbum} type = "text" variant = "outlined" label = "Search Albums" placeholder="Search Albums..."/>
+                <TextField onInput={searchAlbum} type = "text" variant = "outlined" label = "Search Albums" placeholder="Search Albums..." sx = {{width: '400px'}}/>
                 <Button onClick={sortDataByYear} variant="contained" disableElevation>Sort {sort === 'ascending' ? `(Oldest)` : `(Latest)`}</Button>
             </div>
             <div>

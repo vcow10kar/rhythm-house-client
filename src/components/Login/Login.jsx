@@ -19,7 +19,7 @@ const Login = () => {
             password: data.get('password')
         }
 
-        axios.post('http://localhost:5000/artist/login', payload)
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/artist/login`, payload)
         .then((res) => {
             localStorage.setItem('token', res.data.token);
             handleCheckUser();

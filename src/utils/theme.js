@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material";
 
 const theme = createTheme({
     palette: {
-        type: 'dark',
+        mode: 'dark',
         
         primary: {
             main: '#384AF1'
@@ -28,7 +28,8 @@ const theme = createTheme({
                     fontWeight: '500',
                     borderRadius: '0px',
                     outline: '2px',
-                    width: '200px'
+                    width: '200px',
+                    border: '2px solid #384AF1'
                 }
 
             }
@@ -37,7 +38,7 @@ const theme = createTheme({
         MuiTextField: {
             styleOverrides: {
                 root: {
-                    margin: '10px 0px'
+                    margin: '10px 0px',
                 }
             }
         },

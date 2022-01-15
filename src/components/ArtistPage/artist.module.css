@@ -1,8 +1,8 @@
 .artistPage {
-    width: 70%;
+    width: 80%;
     margin: auto;
-    background-color: white;
-    color: black;
+    /* background-color: white;
+    color: black; */
     padding: 20px;
 }
 
@@ -28,4 +28,26 @@
 
 .albumForm > * {
     margin: auto;
+}
+
+.albumDiv {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.albumDetails {
+    width: 20%;
+    min-width: 250px;
+}
+
+.albumDetails img {
+    width: 100%;
+    height: auto;
+}
+
+.artistTab {
+    display: flex;
 }

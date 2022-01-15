@@ -14,7 +14,7 @@ export default function AuthContext({ children }) {
         let tok = localStorage.getItem('token');
         console.log(tok);
         if (!artistObj) {
-            axios.get(`http://localhost:5000/artist/getArtist`,{
+            axios.get(`${process.env.REACT_APP_BACKEND_URL}/artist/getArtist`,{
                 headers: {
                     'Authorization': `Bearer ${tok}`
                 }
