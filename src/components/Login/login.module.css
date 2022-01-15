@@ -1,0 +1,25 @@
+.loginStack {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    align-items: center;
+    color: black;
+}
+
+.loginStack > * {
+    width: 60%;
+}
+
+.loginStack h1 {
+    color: #384AF1;
+}
+
+.loginStack h2 {
+    margin-top: 20px;
+}
+.loginStack h2 a {
+    color: #384AF1;
+}

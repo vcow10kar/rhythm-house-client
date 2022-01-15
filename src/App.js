@@ -1,10 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import { Button } from '@mui/material';
+import Navbar from './components/Navbar/Navbar';
+import MainPage from './components/MainPage/MainPage';
+import AppRoutes from './components/Routes/AppRoutes';
 
 function App() {
   return (
     <div className="App">
-      <h1>Rhythm House</h1>
+      <Navbar/>
+      <AppRoutes/>
     </div>
   );
 }
