@@ -3,6 +3,8 @@ import axios from 'axios';
 import Album from "./Album";
 import styles from './album.module.css';
 import { Button, TextField } from "@mui/material";
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
 
 const MainPage = () => {
     const [searchText, setSearchText] = useState('');
@@ -45,8 +47,14 @@ const MainPage = () => {
     }, []);
     return (
         <div>
-            <div className = {styles.actionsDiv}>
-                <TextField onInput={searchAlbum} type = "text" variant = "outlined" label = "Search Albums" placeholder="Search Albums..." sx = {{width: '400px'}}/>
+            <div className={styles.actionsDiv}>
+                <TextField InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <SearchIcon color = "primary" />
+                        </InputAdornment>
+                    ),
+                }} onInput={searchAlbum} type="text" variant="outlined" placeholder="Search Albums..." sx={{ width: '400px' }} />
                 <Button onClick={sortDataByYear} variant="contained" disableElevation>Sort {sort === 'ascending' ? `(Oldest)` : `(Latest)`}</Button>
             </div>
             <div>

@@ -11,11 +11,11 @@ const Register = () => {
         <div className={styles.registerStack}>
             <h1>REGISTER HERE</h1>
             <TextField type="text" required placeholder="Enter First Name..." sx={{ color: 'white' }} variant="outlined" label="First Name" />
-            <TextField type="text" required placeholder="Enter Second Name..." sx={{ color: 'white' }} variant="outlined" label="Second Name" />
+            <TextField type="text" required placeholder="Enter Last Name..." sx={{ color: 'white' }} variant="outlined" label="Last Name" />
             <TextField type="text" required placeholder="Enter Email Id..." sx={{ color: 'white' }} variant="outlined" label="Email Id" />
             <TextField type="text" required placeholder="Enter Username..." sx={{ color: 'white' }} variant="outlined" label="Username" />
             <TextField type="password" required placeholder="Enter Password..." sx={{ color: 'white' }} variant="outlined" label="Password" />
-            <Button variant="contained" disableElevation>Register</Button>
+            <Button variant="contained" disableElevation sx = {{marginTop: '20px'}}>Register</Button>
 
             <h2>Already have an account? <Link to = '/login'>Login!</Link></h2>
         </div>

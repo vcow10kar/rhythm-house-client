@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import styles from './artist.module.css';
-// import AlbumSongs from './AlbumSongs';
+import AlbumSongs from '../MainPage/AlbumSongs';
 
 const Album = ({ data }) => {
     const [songs, setSongs] = useState([]);
@@ -24,7 +24,7 @@ const Album = ({ data }) => {
             <h2 className={styles.albumName}>{data.name}</h2>
             <p>{data.year}</p>
 
-            {/* <AlbumSongs album = {data} songs = {songs} open = {open} handleClose = {handleClose} handleOpen = {handleOpen}/> */}
+            <AlbumSongs album = {data} songs = {songs} open = {open} handleClose = {handleClose} handleOpen = {handleOpen}/>
         </div>
     )
 }
