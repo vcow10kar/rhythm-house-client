@@ -3,10 +3,8 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
     padding: 30px;
     align-items: center;
-    color: black;
 }
 
 .registerStack > * {
@@ -15,6 +13,7 @@
 
 .registerStack h1 {
     color: #384AF1;
+    margin-bottom: 20px;
 }
 
 .registerStack h2 {
