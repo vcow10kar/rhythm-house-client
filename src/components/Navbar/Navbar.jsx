@@ -1,17 +1,17 @@
 import { Button } from "@mui/material";
 import { Link } from 'react-router-dom';
 import styles from './navbar.module.css';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-    const {artist} = useSelector(state => state.artist);
+    const { artist } = useSelector(state => state.artist);
 
     return (
         <div className={styles.navbar}>
             <div className={styles.appLogo}>
-                <Link to='/'>
-                    <img src='/assets/logo.png' alt='rhythm-logo' />
-                </Link>
+
+                <img onClick={() => window.location.href = '/'} src='/assets/logo.png' alt='rhythm-logo' />
+
             </div>
 
             <div>

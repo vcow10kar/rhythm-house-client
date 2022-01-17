@@ -2,15 +2,15 @@ import { TextField, Button } from "@mui/material";
 import styles from './login.module.css';
 import { loginArtist } from "../../redux/artist/action";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from 'react-router';
 import { getArtistsAlbums } from "../../redux/album/action";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
 
     const { loading, artist, failure } = useSelector(state => state.artist);
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const history = useHistory();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -24,7 +24,7 @@ const Login = () => {
 
         dispatch(loginArtist(payload));
 
-        navigate('/', {});
+        history.push('/');
     }
 
     return (

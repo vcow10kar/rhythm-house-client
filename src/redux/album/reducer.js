@@ -6,6 +6,8 @@ const initState = {
     loading: false,
     failure: false,
     artistsAlbum: [],
+    pages: 1,
+    genres: [],
 }
 
 const reducer = (state = initState, {type, payload}) => {
@@ -32,7 +34,9 @@ const reducer = (state = initState, {type, payload}) => {
                 ...state,
                 loading: false,
                 failure: false,
-                albums: [...payload]
+                albums: [...payload.albums],
+                pages: payload.pages,
+                genres: payload.genres
             }
         }
 

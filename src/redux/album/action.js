@@ -47,13 +47,19 @@ const getArtistsAlbums = (id) => async(dispatch) => {
     }
 }
 
-const getAlbums = (payload) => async (dispatch) => {
+const getAlbums = (query) => async (dispatch) => {
     try {
         dispatch(albumLoading());
 
-        const data  = await getAlbumsRequest(payload);
+        const data  = await getAlbumsRequest(query);
 
-        dispatch(albumSuccess(data.data.albums));
+        const pages = [];
+
+        for(let i = 1; i <= data.data.pages; i++) {
+            pages.push(i);
+        }
+
+        dispatch(albumSuccess({albums: data.data.albums, pages: pages, genres: [...data.data.genres]}));
     } catch (err) {
         dispatch(albumFailure());
     }

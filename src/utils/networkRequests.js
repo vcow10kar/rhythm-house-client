@@ -4,8 +4,8 @@ export const loginArtistRequest = async (payload) => {
     return axios.post(`${process.env.REACT_APP_BACKEND_URL}/artist/login`, payload);
 }
 
-export const getAlbumsRequest = async(payload) => {
-    return axios.get(`${process.env.REACT_APP_BACKEND_URL}/album`)
+export const getAlbumsRequest = async(query) => {
+    return axios.get(`${process.env.REACT_APP_BACKEND_URL}/album${query}`)
 }
 
 export const getArtistAlbumsRequest = async(id) => {

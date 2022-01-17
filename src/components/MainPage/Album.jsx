@@ -22,8 +22,9 @@ const Album = ({ data }) => {
         <div className={styles.albumDiv}>
             <img onClick={handleOpen} src={data.coverURL} alt="cover url" />
             <h2 className={styles.albumName}>{data.name}</h2>
-            <p>{data.artist.name.firstName} {data.artist.name.lastName}</p>
-            <p>{data.year}</p>
+            <p><em>{data.artist.name.firstName} {data.artist.name.lastName}</em></p>
+            <p>Genre: {data.genre}</p>
+            <p>Year of Release: {data.year}</p>
 
             <AlbumSongs album = {data} songs = {songs} open = {open} handleClose = {handleClose} handleOpen = {handleOpen}/>
         </div>

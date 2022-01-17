@@ -1,10 +1,10 @@
 .albums {
-    width: 90%;
+    width: 85%;
     margin: auto;
     flex-wrap: wrap;
     display: flex;
-    align-items: center;
-    gap: 2%;
+    justify-content: left;
+    gap: 30px;
 }
 
 .albumDiv {
@@ -13,6 +13,11 @@
     padding: 10px;
     border: 1px solid rgb(46, 46, 46);
     min-width: 200px;
+}
+
+.filtersDiv {
+    width: 96%;
+    margin: auto;
 }
 
 .albumName {
@@ -79,4 +84,8 @@
 
 .actionsDiv > * {
     width: 300px;
+}
+
+.pagination {
+    text-align: center;
 }

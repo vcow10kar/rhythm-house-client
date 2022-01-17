@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getArtistsAlbums } from "../../redux/album/action";
 import { logoutSuccess } from "../../redux/artist/action";
 import {Button} from '@mui/material';
-import { useNavigate } from "react-router";
+import { useHistory } from "react-router-dom";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -39,7 +39,7 @@ const ArtistPage = () => {
     const [value, setValue] = useState(0);
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const history = useHistory();
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -51,7 +51,7 @@ const ArtistPage = () => {
 
     const logout = () => {
         dispatch(logoutSuccess());
-        navigate('/', {});
+        history.push('/');
     }
 
     useEffect(() => {
