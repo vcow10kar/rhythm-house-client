@@ -3,11 +3,14 @@ import axios from "axios";
 import styles from './artist.module.css';
 import { LoginContext } from "../context/LoginContext";
 import { useContext } from 'react';
-
+import { useDispatch, useSelector } from "react-redux";
+import { addNewAlbum } from "../../redux/album/action";
 
 const AlbumForm = ({setAlbum}) => {
 
-    const {token} = useContext(LoginContext);
+   const {token, artist} = useSelector(state => state.artist);
+   
+   const dispatch = useDispatch();
 
     const handleAlbumSubmit = (e) => {
         e.preventDefault();
@@ -21,17 +24,8 @@ const AlbumForm = ({setAlbum}) => {
             coverURL: data.get('coverURL'),
         }
 
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/album`,payload,{
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-        .then(res => {
-            setAlbum(res.data.album);
-        })
-        .catch(err => {
-            console.log('Error:', err);
-        }) 
+        dispatch(addNewAlbum(payload, token));
+        
     }
     return (
         <div>

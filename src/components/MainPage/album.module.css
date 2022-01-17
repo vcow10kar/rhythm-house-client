@@ -1,10 +1,10 @@
 .albums {
-    width: 96%;
+    width: 90%;
     margin: auto;
     flex-wrap: wrap;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    align-items: center;
+    gap: 2%;
 }
 
 .albumDiv {

@@ -1,13 +1,11 @@
 import { Button } from "@mui/material";
 import { Link } from 'react-router-dom';
 import styles from './navbar.module.css';
-import { LoginContext } from "../context/LoginContext";
-import { useContext } from 'react';
+import {useSelector} from 'react-redux';
 
 const Navbar = () => {
-    const { artistObj } = useContext(LoginContext);
+    const {artist} = useSelector(state => state.artist);
 
-    
     return (
         <div className={styles.navbar}>
             <div className={styles.appLogo}>
@@ -17,17 +15,20 @@ const Navbar = () => {
             </div>
 
             <div>
-                <Button variant="outlined">
-                    {artistObj ?
-                        <Link to='/artistPage'>
-                            Hi, {artistObj.name.firstName}
-                        </Link>
-                        :
-                        <Link to='/login'>
+
+                {artist ?
+                    <Link to='/artistPage'>
+                        <Button variant="outlined">
+                            Hi, {artist.name.firstName}
+                        </Button>
+                    </Link>
+                    :
+                    <Link to='/login'>
+                        <Button variant="outlined">
                             Artist Gateway
-                        </Link>
-                    }
-                </Button>
+                        </Button>
+                    </Link>
+                }
             </div>
         </div>
     )

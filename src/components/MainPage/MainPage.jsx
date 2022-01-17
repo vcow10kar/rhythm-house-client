@@ -5,26 +5,27 @@ import styles from './album.module.css';
 import { Button, TextField } from "@mui/material";
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
+import { getAlbums } from "../../redux/album/action";
+import { useDispatch, useSelector } from "react-redux";
 
 const MainPage = () => {
+
+    const {loading, failure, albums} = useSelector(state => state.album);
+
     const [searchText, setSearchText] = useState('');
-    const [filteredData, setFilteredData] = useState([]);
-    const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState(albums);
+    const [data, setData] = useState([...albums]);
     const [sort, setSort] = useState('ascending');
 
+    const dispatch = useDispatch();
+
     const getAlbumData = () => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/album`)
-            .then((res) => {
-                setData(res.data.albums);
-                setFilteredData(res.data.albums);
-            })
-            .catch(err => {
-                console.log('Error:', err);
-            })
+        dispatch(getAlbums(null));
     }
 
     const sortDataByYear = () => {
         if (sort === 'ascending') {
+            console.log('sorting ...');
             let temp = filteredData.sort((a, b) => a.year - b.year);
             setFilteredData([...temp]);
             setSort('descending');
@@ -43,7 +44,7 @@ const MainPage = () => {
 
     useEffect(() => {
         getAlbumData();
-        sortDataByYear();
+        //sortDataByYear();
     }, []);
     return (
         <div>
@@ -58,9 +59,9 @@ const MainPage = () => {
                 <Button onClick={sortDataByYear} variant="contained" disableElevation>Sort {sort === 'ascending' ? `(Oldest)` : `(Latest)`}</Button>
             </div>
             <div>
-                {data.length > 0 ?
+                {albums.length > 0 ?
                     <div className={styles.albums}>
-                        {filteredData.map(el => {
+                        {albums.map(el => {
                             return <Album key={el._id} data={el} />
                         })}
                     </div>

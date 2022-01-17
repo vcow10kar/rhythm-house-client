@@ -5,16 +5,17 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import customTheme from './utils/theme';
-import AuthContext from './components/context/LoginContext';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={customTheme}>
-      <AuthContext>
+      <Provider store={store}>
         <Router>
           <App />
         </Router>
-      </AuthContext>
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
