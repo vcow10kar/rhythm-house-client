@@ -19,3 +19,11 @@ export const addAlbumRequest = async(payload, token) => {
         }
     })
 }
+
+export const updateArtistProfileRequest = async(payload, token, id) => {
+    return axios.patch(`${process.env.REACT_APP_BACKEND_URL}/artist/${id}`, payload, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+}

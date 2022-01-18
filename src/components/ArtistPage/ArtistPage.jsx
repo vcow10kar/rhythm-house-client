@@ -9,8 +9,8 @@ import Tab from '@mui/material/Tab';
 import { useDispatch, useSelector } from "react-redux";
 import { getArtistsAlbums } from "../../redux/album/action";
 import { logoutSuccess } from "../../redux/artist/action";
-import {Button} from '@mui/material';
 import { useHistory } from "react-router-dom";
+import Profile from "./Profile";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -70,9 +70,9 @@ const ArtistPage = () => {
             </Tabs>
 
             <TabPanel value={value} index={0}>
-                {artist.name.firstName}'s Profile
 
-                <Button onClick = {logout} variant = "contained">LOGOUT</Button>
+                <Profile/>
+                
             </TabPanel>
             <TabPanel value={value} index={1}>
                 {artistsAlbum ?

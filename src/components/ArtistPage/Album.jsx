@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import styles from './artist.module.css';
-import AlbumSongs from '../MainPage/AlbumSongs';
+import AlbumSongs from './AlbumSongs';
 
 const Album = ({ data }) => {
     const [songs, setSongs] = useState([]);

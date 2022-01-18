@@ -1,4 +1,4 @@
-import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from "./actionTypes";
+import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, UPDATE_SUCCESS } from "./actionTypes";
 
 const token = localStorage.getItem('token');
 const artistObj = JSON.parse(localStorage.getItem('artistObj'));
@@ -45,6 +45,13 @@ const reducer = (state = initState, {type, payload}) => {
                 failure: false,
                 token: payload.token,
                 artist: payload.artist
+            }
+        }
+
+        case UPDATE_SUCCESS: {
+            return {
+                ...state,
+                artist: payload
             }
         }
 
