@@ -27,3 +27,7 @@ export const updateArtistProfileRequest = async(payload, token, id) => {
         }
     })
 }
+
+export const searchAlbumsRequest = async(query) => {
+    return axios.get(`${process.env.REACT_APP_BACKEND_URL}/album/search/search${query}`);
+}

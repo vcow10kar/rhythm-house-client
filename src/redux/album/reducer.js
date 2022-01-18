@@ -1,5 +1,5 @@
 import { getAlbumsRequest } from "../../utils/networkRequests";
-import { ALBUMS_FAILURE, ALBUMS_SUCCESS, ALBUMS_LOADING, ARTIST_ALBUMS, ADD_ALBUM } from "./actionTypes";
+import { ALBUMS_FAILURE, ALBUMS_SUCCESS, ALBUMS_LOADING, ARTIST_ALBUMS, ADD_ALBUM, SEARCH_ALBUMS } from "./actionTypes";
 
 const initState = {
     albums: [],
@@ -56,6 +56,16 @@ const reducer = (state = initState, {type, payload}) => {
                 failure: false,
                 artistsAlbum: [...state.artistsAlbum, payload],
                 albums: [...state.albums, payload]  
+            }
+        }
+
+        case SEARCH_ALBUMS: {
+            return {
+                ...state,
+                loading: false,
+                failure: false,
+                albums: [...payload.albums],
+                pages: payload.pages
             }
         }
         

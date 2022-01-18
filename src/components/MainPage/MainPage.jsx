@@ -9,10 +9,12 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import { getAlbums } from "../../redux/album/action";
+import { getAlbums, searchAlbums } from "../../redux/album/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { useTheme } from "@emotion/react";
+import useDebounce from "../../utils/customHooks/useDebounce";
+import { searchAlbumsRequest } from "../../utils/networkRequests";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -27,12 +29,12 @@ const MenuProps = {
 
 function getStyles(name, personName, theme) {
     return {
-      fontWeight:
-        personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
+        fontWeight:
+            personName.indexOf(name) === -1
+                ? theme.typography.fontWeightRegular
+                : theme.typography.fontWeightMedium,
     };
-  }
+}
 
 const MainPage = () => {
     const theme = useTheme();
@@ -71,10 +73,17 @@ const MainPage = () => {
 
     }
 
-    const searchAlbum = (e) => {
-        let temp = data.filter(el => el.name.toLowerCase().includes(e.target.value.toLowerCase()) ? true : false);
-        setFilteredData(temp);
-    }
+    const searchAlbum = useDebounce((e) => {
+        const urlParams = new URLSearchParams()
+        if (e.target.value.length > 0) {
+            urlParams.append("s", e.target.value);
+            history.push({ search: urlParams.toString() })
+            const query = history.location.search;
+            dispatch(searchAlbums(query))
+        } else {
+            window.location.href = '/';
+        }
+    }, 1000);
 
     const changeCurrentPage = (i) => {
         setCurrPage(i);
@@ -82,13 +91,13 @@ const MainPage = () => {
 
     const handleChange = (event) => {
         const {
-          target: { value },
+            target: { value },
         } = event;
         setFilters(
-          // On autofill we get a stringified value.
-          typeof value === 'string' ? value.split(',') : value,
+            // On autofill we get a stringified value.
+            typeof value === 'string' ? value.split(',') : value,
         );
-      };
+    };
 
     useEffect(() => {
         const urlParams = new URLSearchParams()
@@ -103,7 +112,7 @@ const MainPage = () => {
             urlParams.append('sort', sort);
         }
 
-        if(filters.length > 0 && filters) {
+        if (filters.length > 0 && filters) {
             urlParams.append('genres', filters.join(","));
         }
 
@@ -118,17 +127,19 @@ const MainPage = () => {
     return (
         <div>
             <div className={styles.actionsDiv}>
-                <TextField InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <SearchIcon color="primary" />
-                        </InputAdornment>
-                    ),
-                }} onInput={searchAlbum} type="text" variant="outlined" placeholder="Search Albums..." sx={{ width: '400px' }} />
+                <TextField
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <SearchIcon color="primary" />
+                            </InputAdornment>
+                        ),
+                    }}
+                    onInput={searchAlbum} type="text" variant="outlined" placeholder="Search Albums..." sx={{ width: '400px' }} />
                 <Button onClick={sortDataByYear} variant="contained" disableElevation>Sort {sort === 'ascending' ? `(Oldest)` : `(Latest)`}</Button>
-            {/* </div> */}
+                {/* </div> */}
 
-            {/* <div className={styles.filtersDiv}> */}
+                {/* <div className={styles.filtersDiv}> */}
                 {genres ?
                     <FormControl sx={{ minWidth: 200, marginBottom: '20px' }}>
                         <InputLabel id="demo-multiple-chip-label">Genres</InputLabel>
@@ -179,7 +190,7 @@ const MainPage = () => {
                     pages.map(el => {
                         return <Button variant={el == currPage ? "contained" : null} onClick={() => changeCurrentPage(el)} key={`buttonKey-${el}`} sx={{ width: '16px', margin: '30px 10px' }}>{el}</Button>
                     })
-                    : <Button>1</Button>
+                    : <Button variant="contained" sx={{ width: '16px', margin: '30px 10px' }}>1</Button>
                 }
 
             </div>

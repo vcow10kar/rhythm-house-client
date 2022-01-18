@@ -1,5 +1,5 @@
-import { addAlbumRequest, getAlbumsRequest, getArtistAlbumsRequest } from "../../utils/networkRequests";
-import { ALBUMS_FAILURE, ALBUMS_SUCCESS, ALBUMS_LOADING, ARTIST_ALBUMS, ADD_ALBUM } from "./actionTypes";
+import { addAlbumRequest, getAlbumsRequest, getArtistAlbumsRequest, searchAlbumsRequest } from "../../utils/networkRequests";
+import { ALBUMS_FAILURE, ALBUMS_SUCCESS, ALBUMS_LOADING, ARTIST_ALBUMS, ADD_ALBUM, SEARCH_ALBUMS } from "./actionTypes";
 
 const albumLoading = () => {
     return {
@@ -34,11 +34,18 @@ const addAlbum = (payload) => {
     }
 }
 
-const getArtistsAlbums = (id) => async(dispatch) => {
+const searchAlbumsSuccess = (payload) => {
+    return {
+        type: SEARCH_ALBUMS,
+        payload: payload
+    }
+} 
+
+const getArtistsAlbums = (id) => async (dispatch) => {
     try {
         dispatch(albumLoading());
 
-        const data  = await getArtistAlbumsRequest(id);
+        const data = await getArtistAlbumsRequest(id);
 
         dispatch(artistAlbum(data.data.albums));
     } catch (err) {
@@ -51,15 +58,15 @@ const getAlbums = (query) => async (dispatch) => {
     try {
         dispatch(albumLoading());
 
-        const data  = await getAlbumsRequest(query);
+        const data = await getAlbumsRequest(query);
 
         const pages = [];
 
-        for(let i = 1; i <= data.data.pages; i++) {
+        for (let i = 1; i <= data.data.pages; i++) {
             pages.push(i);
         }
 
-        dispatch(albumSuccess({albums: data.data.albums, pages: pages, genres: [...data.data.genres]}));
+        dispatch(albumSuccess({ albums: data.data.albums, pages: pages, genres: [...data.data.genres] }));
     } catch (err) {
         dispatch(albumFailure());
     }
@@ -69,13 +76,25 @@ const addNewAlbum = (payload, token) => async (dispatch) => {
     try {
         dispatch(albumLoading());
 
-        const data  = await addAlbumRequest(payload, token);
+        const data = await addAlbumRequest(payload, token);
 
         dispatch(addAlbum(data.data.album));
-        
+
     } catch (err) {
         dispatch(albumFailure());
     }
 }
 
-export { getAlbums, getArtistsAlbums, addNewAlbum };
+const searchAlbums = (query) => async (dispatch) => {
+    try {
+        dispatch(albumLoading());
+
+        const data = await searchAlbumsRequest(query);
+
+        dispatch(searchAlbumsSuccess(data.data));
+    } catch (err) {
+        dispatch(albumFailure());
+    }
+}
+
+export { getAlbums, getArtistsAlbums, addNewAlbum, searchAlbums };
