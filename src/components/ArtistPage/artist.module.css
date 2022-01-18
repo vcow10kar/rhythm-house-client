@@ -34,13 +34,13 @@
     width: 85%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: left;
     margin: auto;
     gap: 20px;
 }
 
 .albumDetails {
-    border: 1px solid grey;
+    border: 1px solid rgb(46, 46, 46);
     padding: 10px;
     width: 20%;
     min-width: 250px;
@@ -49,6 +49,15 @@
 .albumDetails img {
     width: 100%;
     height: auto;
+}
+
+.albumDetails:hover  img{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.albumName {
+    color: #384AF1;
 }
 
 .artistTab {
@@ -68,4 +77,54 @@
     width: 100%;    
     justify-content: space-between;
     gap: 30px;
+}
+
+.albumArtistDetails {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 40px;
+}
+
+.albumSongsHeader h2 {
+    margin: 20px 10px 0px 10px;
+}
+
+.songsHeader {
+    color: #384AF1;
+}
+
+.albumSongDetails {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px auto;
+    align-items: center;
+    padding: 5px 5px; 
+}
+
+.albumSongDetails:hover {
+    background-color: rgba(32, 30, 30, 0.726);
+}
+
+.songInfo {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.updateSongInfo {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.songButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.songtext > * {
+    margin: 10px 0px;
 }

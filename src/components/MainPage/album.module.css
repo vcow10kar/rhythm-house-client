@@ -27,6 +27,7 @@
 .albumDiv img {
     width: 100%;
     height: auto;
+    min-height: 220px;
 }
 
 .albumDiv:hover  img{

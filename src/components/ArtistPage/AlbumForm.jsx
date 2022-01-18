@@ -25,6 +25,8 @@ const AlbumForm = ({setAlbum}) => {
         }
 
         dispatch(addNewAlbum(payload, token));
+
+        e.target.reset()
         
     }
     return (

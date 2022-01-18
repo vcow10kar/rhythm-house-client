@@ -78,7 +78,7 @@ const addNewAlbum = (payload, token) => async (dispatch) => {
 
         const data = await addAlbumRequest(payload, token);
 
-        dispatch(addAlbum(data.data.album));
+        dispatch(getArtistsAlbums(data.data.album.artist));
 
     } catch (err) {
         dispatch(albumFailure());
