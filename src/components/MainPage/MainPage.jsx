@@ -75,7 +75,7 @@ const MainPage = () => {
 
     const searchAlbum = useDebounce((e) => {
         const urlParams = new URLSearchParams()
-        if (e.target.value.length > 3) {
+        if (e.target.value.length > 0) {
             urlParams.append("s", e.target.value);
             history.push({ search: urlParams.toString() })
             const query = history.location.search;
