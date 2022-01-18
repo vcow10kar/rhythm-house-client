@@ -47,6 +47,7 @@
 }
 
 .albumDetails img {
+
     width: 100%;
     height: auto;
 }
@@ -112,6 +113,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.albumCover {
+    max-width: 275px;
 }
 
 .updateSongInfo {
