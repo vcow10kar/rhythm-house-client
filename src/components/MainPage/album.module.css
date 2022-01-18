@@ -35,6 +35,10 @@
     cursor: pointer;
 }
 
+.albumDiv > * {
+    margin-bottom: 5px;
+}
+
 .albumDetails {
     display: flex;
     justify-content: left;
@@ -64,8 +68,16 @@
     color: #384AF1;
 }
 
+.songInfo {
+    font-weight: 500;
+}
+
 .albumSongDetails > p:nth-child(2) {
     color: #384AF1;
+}
+
+.songtext > * {
+    margin: 10px 0px;
 }
 
 .albumSongDetails:hover {

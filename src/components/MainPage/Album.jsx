@@ -23,8 +23,8 @@ const Album = ({ data }) => {
             <img onClick={handleOpen} src={data.coverURL} alt="cover url" />
             <h2 className={styles.albumName}>{data.name}</h2>
             <p><em>{data.artist.name.firstName} {data.artist.name.lastName}</em></p>
-            <p>Genre: {data.genre}</p>
-            <p>Year of Release: {data.year}</p>
+            <p className={styles.songInfo}>Genre: <span className={styles.songsHeader}>{data.genre}</span></p>
+            <p className={styles.songInfo}>Year of Release: <span className={styles.songsHeader}>{data.year}</span></p>
 
             <AlbumSongs album = {data} songs = {songs} open = {open} handleClose = {handleClose} handleOpen = {handleOpen}/>
         </div>
