@@ -173,6 +173,7 @@ const MainPage = () => {
                     : null}
             </div>
             <div>
+                {loading ? <p>Loading....</p> : null}
                 {albums.length > 0 ?
                     <div className={styles.albums}>
                         {albums.map(el => {
