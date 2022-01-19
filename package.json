@@ -1,5 +1,6 @@
 {
   "name": "rhythm-house-client",
+  "proxy": "https://rhythm-house-server.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
